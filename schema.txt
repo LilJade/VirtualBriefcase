@@ -1,0 +1,48 @@
+//ESQUEMA DE LAS COLLECTIONS
+
+db.UserCollection.insert{
+    "_id": ObjectId,
+	"nombres": "",
+	"apellidos": "",
+	"fecha_nacimiento": date,
+	"foto": "",
+	"correo": "",
+	"password": "",
+	"direccion": "",
+	"descripcion": "",
+	"profesion": [...]string,
+	"estudios": [...]string,
+	"redes": [...]string,
+	"last_update": date,
+	"created_at": date
+}
+
+db.ProyectCollection.insert{
+    "_id": ObjectId,
+    "id_usuario": "",
+	"titulo": "",
+	"descripcion": "",
+	"portada": "",
+	"tipo": [...]string,
+	"empresa": [...]string,
+	"herramientas": [...]string,
+	"etiquetas": [...]string,
+	"imagenes": [...]string,
+	"last_update": date,
+    "created_at": date,
+	"colaboradores_pr":   {
+				"nombre": "",
+				"rol": ""
+			      }
+}
+
+db.ComentCollection.insert{
+	"comentario": "",
+	"idUsuario": ObjectId,
+	"id_pr": ObjectId
+}
+
+db.FollowCollection.insert{
+	"idFollowed": ObjectId,
+	"idFollower": ObjectId
+}
