@@ -5,32 +5,22 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
+//Checklogin verifico  si el usuario existe en el login
+func Checklogin(email string, password string) (models.Usuario, bool) {
+	user, verificar, _ := ChequeoYaExisteUsuario(email) //llamo a funcion para verifique si el usuario existe
 
-// verifico  si el usuario existe en el login
+	if verificar == false {
+		return user, false
+	}
+	passwordBytes := []byte(password)
+	passwordbd := []byte(user.Password)
 
-func Checklogin(email string, password string)( models.Usuario, bool){
-	user,verificar,_:=ChequeoYaExisteUsuario(email) //llamo a funcion para verifique si el usuario existe
+	err := bcrypt.CompareHashAndPassword(passwordbd, passwordBytes) //compuebo la contraseña
 
-	if verificar == false{
-		return user,false
-
+	if err != nil {
+		return user, false
 	}
 
-
-
-
- 	passwordBytes:=[]byte(password)
- 	passwordbd :=[]byte(user.Password)
-
- 	err:=bcrypt.CompareHashAndPassword(passwordbd,passwordBytes)//compuebo la contraseña
-
- 	if err !=nil{
-		return user,false
-	}
-
-	return user,true
-
-
-
+	return user, true
 
 }
