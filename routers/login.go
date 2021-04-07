@@ -36,7 +36,7 @@ func ULogin(response http.ResponseWriter, r *http.Request) {
 
 	jwtKey, err := jwt.GeneroJwt(usuario)
 	if err != nil {
-		http.Error(response, "Ocurrio un erro al intentar generar el Token correspondiente"+err.Error(), 400)
+		http.Error(response, "Ocurrio un error al intentar generar el Token correspondiente"+err.Error(), 400)
 		return
 	}
 

@@ -17,6 +17,7 @@ func Manejadores() {
 
 	router.HandleFunc("/registro", middleware.CheckDB(routers.Registro)).Methods("POST")
 	router.HandleFunc("/login",middleware.CheckDB(routers.ULogin)).Methods("POST")
+	router.HandleFunc("/actualizar",middleware.CheckDB(middleware.ValidoJWT(routers.ActualizarDatos))).Methods("PUT")
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
