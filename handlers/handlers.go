@@ -16,13 +16,16 @@ func Manejadores() {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/registro", middleware.CheckDB(routers.Registro)).Methods("POST")
-	router.HandleFunc("/login",middleware.CheckDB(routers.ULogin)).Methods("POST")
-	router.HandleFunc("/actualizar",middleware.CheckDB(middleware.ValidoJWT(routers.ActualizarDatos))).Methods("PUT")
+	router.HandleFunc("/login", middleware.CheckDB(routers.ULogin)).Methods("POST")
+	router.HandleFunc("/usuario", middleware.CheckDB(middleware.ValidoJWT(routers.VerUsuario))).Methods("GET")
+	router.HandleFunc("/actualizar", middleware.CheckDB(middleware.ValidoJWT(routers.ActualizarDatos))).Methods("PUT")
+
 	PORT := os.Getenv("PORT")
+
 	if PORT == "" {
 		PORT = "8080"
 	}
+
 	handler := cors.AllowAll().Handler(router)
 	log.Fatal(http.ListenAndServe(":"+PORT, handler))
-
 }
