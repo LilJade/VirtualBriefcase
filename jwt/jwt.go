@@ -25,6 +25,9 @@ func GeneroJwt(t models.Usuario) (string, error) {
 		"profesion":        t.Profesion,
 		"creado":           t.Creado,
 		"exp":              time.Now().Add(time.Hour * 24).Unix(),
+		"instagram":        t.Instagram,
+		"facebook":         t.Facebook,
+		"twitter":          t.Twitter,
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)

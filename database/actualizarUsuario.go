@@ -51,6 +51,18 @@ func ActualizarUsuario(U models.Usuario, ID string) (bool, error) {
 
 	registro["creado"] = U.Creado
 
+	if len(U.Instagram) > 0 {
+		registro["instagram"] = U.Instagram
+	}
+
+	if len(U.Facebook) > 0 {
+		registro["facebook"] = U.Facebook
+	}
+
+	if len(U.Twitter) > 0 {
+		registro["twitter"] = U.Twitter
+	}
+
 	updateString := bson.M{ //Convertir el valor bson
 		"$set": registro, //
 	}

@@ -19,4 +19,7 @@ type Usuario struct {
 	Biografia       string             `bson:"biografia" json:"biografia,omitempty"`
 	Profesion       string             `bson:"profesion" json:"profesion,omitempty"`
 	Creado          time.Time          `bson:"creado" json:"creado,omitempty"`
+	Instagram       string             `bson:"instagram" json:"instagram,omitempty"`
+	Facebook        string             `bson:"facebook" json:"facebook,omitempty"`
+	Twitter         string             `bson:"twitter" json:"twitter,omitempty"`
 }
