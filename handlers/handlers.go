@@ -22,7 +22,10 @@ func Manejadores() {
 
 	router.HandleFunc("/subirAvatar", middleware.CheckDB(middleware.ValidoJWT(routers.SubirAvatar))).Methods("POST")
 	router.HandleFunc("/obtenerAvatar", middleware.CheckDB(routers.ObtenerAvatar)).Methods("GET")
-	router.HandleFunc("/mostrarDatos",middleware.CheckDB(middleware.ValidoJWT(routers.Listausuarios))).Methods("GET")
+	router.HandleFunc("/mostrarDatos", middleware.CheckDB(middleware.ValidoJWT(routers.Listausuarios))).Methods("GET")
+
+	router.HandleFunc("/createProject", middleware.CheckDB(middleware.ValidoJWT(routers.InsertoProyecto))).Methods("POST")
+	router.HandleFunc("/delProject", middleware.CheckDB(middleware.ValidoJWT(routers.BorroProyecto))).Methods("DELETE")
 
 	PORT := os.Getenv("PORT")
 
