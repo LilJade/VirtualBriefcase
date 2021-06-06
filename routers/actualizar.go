@@ -2,9 +2,9 @@ package routers
 
 import (
 	"encoding/json"
-	"net/http"
 	"github.com/LilJade/virtualBriefcase/database"
 	"github.com/LilJade/virtualBriefcase/models"
+	"net/http"
 )
 
 

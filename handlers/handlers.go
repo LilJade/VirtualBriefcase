@@ -26,7 +26,7 @@ func Manejadores() {
 
 	router.HandleFunc("/createProject", middleware.CheckDB(middleware.ValidoJWT(routers.InsertoProyecto))).Methods("POST")
 	router.HandleFunc("/delProject", middleware.CheckDB(middleware.ValidoJWT(routers.BorroProyecto))).Methods("DELETE")
-
+	router.HandleFunc("/seguidor",middleware.CheckDB(middleware.ValidoJWT(routers.Useguidor))).Methods("POST")
 	PORT := os.Getenv("PORT")
 
 	if PORT == "" {
