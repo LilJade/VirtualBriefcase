@@ -11,7 +11,7 @@ func BorroProyecto(ID string, UserId string) error {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
-	db := MongoConn.Database("db")
+	db := MongoConn.Database("bd")
 	col := db.Collection("proyecto")
 
 	objID, _ := primitive.ObjectIDFromHex(ID)

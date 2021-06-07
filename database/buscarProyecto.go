@@ -13,7 +13,7 @@ func BuscarProyecto(ID string) (m.GraboProyecto, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
 	defer cancel()
 
-	db := MongoConn.Database("db")
+	db := MongoConn.Database("bd")
 	col := db.Collection("proyecto")
 
 	var project m.GraboProyecto

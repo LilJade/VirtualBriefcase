@@ -14,7 +14,3 @@ type DevuelvoProyecto struct {
 	Empresa     string             `bson:"empresa" json:"empresa,omitempty"`
 	Fecha       time.Time          `bson:"fecha" json:"fecha,omitempty"`
 }
-
-/*
-	`bson:"" json:",omitempty"`
-*/
