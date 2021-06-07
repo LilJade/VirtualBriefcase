@@ -26,7 +26,10 @@ func Manejadores() {
 
 	router.HandleFunc("/createProject", middleware.CheckDB(middleware.ValidoJWT(routers.InsertoProyecto))).Methods("POST")
 	router.HandleFunc("/delProject", middleware.CheckDB(middleware.ValidoJWT(routers.BorroProyecto))).Methods("DELETE")
-	router.HandleFunc("/seguidor",middleware.CheckDB(middleware.ValidoJWT(routers.Useguidor))).Methods("POST")
+
+	router.HandleFunc("/seguidor", middleware.CheckDB(middleware.ValidoJWT(routers.Useguidor))).Methods("POST")
+	router.HandleFunc("/consultaRelacion", middleware.CheckDB(middleware.ValidoJWT(routers.ConsultaRelacion))).Methods("GET")
+
 	PORT := os.Getenv("PORT")
 
 	if PORT == "" {
