@@ -6,20 +6,18 @@ import (
 	"net/http"
 )
 
-func Useguidor(response http.ResponseWriter, request *http.Request)  {
-	ID :=request.URL.Query().Get("id")
-	if len(ID)<1{
-		http.Error(response,"es necesario el ID para realizar esta accion",http.StatusBadRequest)
+func Useguidor(response http.ResponseWriter, request *http.Request) {
+	ID := request.URL.Query().Get("id")
+	if len(ID) < 1 {
+		http.Error(response, "es necesario el ID para realizar esta accion", http.StatusBadRequest)
 		return
 	}
 
 	var u models.Relaciones
-	u.UsuarioID=IDusuario
-	u.UsuarioRelacionID=ID
+	u.UsuarioID = IDusuario
+	u.UsuarioRelacionID = ID
 
-
-	status, err :=database.Relacion(u)
-
+	status, err := database.Relacion(u)
 
 	if err != nil {
 		http.Error(response, "Error en la accion"+err.Error(), http.StatusBadRequest)
@@ -27,7 +25,7 @@ func Useguidor(response http.ResponseWriter, request *http.Request)  {
 	}
 
 	if status == false {
-		http.Error(response, "No se ha logrado insertar la relacion"+err.Error(), http.StatusBadRequest)
+		http.Error(response, "No se ha logrado insertar la relacion...", http.StatusBadRequest)
 		return
 	}
 
