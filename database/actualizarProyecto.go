@@ -2,10 +2,11 @@ package database
 
 import (
 	"context"
+	"time"
+
 	m "github.com/LilJade/virtualBriefcase/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"time"
 )
 
 func ActualizarProyecto(P m.GraboProyecto, ID string) (bool, error) {
@@ -13,7 +14,7 @@ func ActualizarProyecto(P m.GraboProyecto, ID string) (bool, error) {
 	defer cancel()
 
 	db := MongoConn.Database("bd")
-	col := db.Collection("proyecto")
+	col := db.Collection("proyectos")
 
 	datos := make(map[string]interface{})
 

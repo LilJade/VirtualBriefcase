@@ -26,7 +26,7 @@ func Manejadores() {
 
 	router.HandleFunc("/createProject", middleware.CheckDB(middleware.ValidoJWT(routers.InsertoProyecto))).Methods("POST")
 	router.HandleFunc("/updateProject", middleware.CheckDB(middleware.ValidoJWT(routers.ActualizarProyecto))).Methods("PUT")
-	router.HandleFunc("/updatePortada", middleware.CheckDB(middleware.ValidoJWT(routers.SubirPortada))).Methods("POST")
+	router.HandleFunc("/updatePortada", middleware.CheckDB(middleware.ValidoJWT(routers.SubirPortada))).Methods("GET")
 	router.HandleFunc("/getPortada", middleware.CheckDB(routers.ObtenerPortada)).Methods("GET")
 	router.HandleFunc("/delProject", middleware.CheckDB(middleware.ValidoJWT(routers.BorroProyecto))).Methods("DELETE")
 	router.HandleFunc("/seeProject", middleware.CheckDB(middleware.ValidoJWT(routers.VeoProjects))).Methods("GET")

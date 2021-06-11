@@ -2,11 +2,12 @@ package database
 
 import (
 	"context"
+	"log"
+	"time"
+
 	m "github.com/LilJade/virtualBriefcase/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"log"
-	"time"
 )
 
 func VeoProyectos(ID string, page int64) ([]*m.DevuelvoProyecto, bool) {
@@ -15,7 +16,7 @@ func VeoProyectos(ID string, page int64) ([]*m.DevuelvoProyecto, bool) {
 	defer cancel()
 
 	db := MongoConn.Database("bd")
-	col := db.Collection("proyecto")
+	col := db.Collection("proyectos")
 
 	var result []*m.DevuelvoProyecto
 
