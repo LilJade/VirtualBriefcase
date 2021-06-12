@@ -5,4 +5,6 @@ type Proyecto struct {
 	Descripcion string `bson:"descripcion" json:"descripcion"`
 	Portada     string `bson:"portada" json:"portada"`
 	Empresa     string `bson:"empresa" json:"empresa"`
+	Github      string `bson:"github" json:"github"`
+	SitioWeb    string `bson:"sitioWeb" json:"sitioWeb"`
 }

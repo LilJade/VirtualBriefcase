@@ -3,10 +3,11 @@ package database
 import (
 	"context"
 	"fmt"
+	"time"
+
 	m "github.com/LilJade/virtualBriefcase/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"time"
 )
 
 func BuscarProyecto(ID string) (m.GraboProyecto, error) {
@@ -14,7 +15,7 @@ func BuscarProyecto(ID string) (m.GraboProyecto, error) {
 	defer cancel()
 
 	db := MongoConn.Database("bd")
-	col := db.Collection("proyecto")
+	col := db.Collection("proyectos")
 
 	var project m.GraboProyecto
 	objID, _ := primitive.ObjectIDFromHex(ID)

@@ -21,6 +21,8 @@ func InsertoProyecto(p m.GraboProyecto) (string, bool, error) {
 		"userid":      p.UserID,
 		"titulo":      p.Titulo,
 		"descripcion": p.Descripcion,
+		"github":      p.Github,
+		"sitioWeb":    p.SitioWeb,
 		"portada":     p.Portada,
 		"empresa":     p.Empresa,
 		"fecha":       p.Fecha,

@@ -21,7 +21,12 @@ func ActualizarProyecto(P m.GraboProyecto, ID string) (bool, error) {
 	if len(P.Titulo) > 0 {
 		datos["titulo"] = P.Titulo
 	}
-
+	if len(P.Github) > 0 {
+		datos["github"] = P.Titulo
+	}
+	if len(P.SitioWeb) > 0 {
+		datos["sitioWeb"] = P.Titulo
+	}
 	if len(P.Descripcion) > 0 {
 		datos["descripcion"] = P.Descripcion
 	}
