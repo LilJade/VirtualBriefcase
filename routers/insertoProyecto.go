@@ -2,10 +2,11 @@ package routers
 
 import (
 	"encoding/json"
-	db "github.com/LilJade/virtualBriefcase/database"
-	m "github.com/LilJade/virtualBriefcase/models"
 	"net/http"
 	"time"
+
+	db "github.com/LilJade/virtualBriefcase/database"
+	m "github.com/LilJade/virtualBriefcase/models"
 )
 
 func InsertoProyecto(w http.ResponseWriter, r *http.Request) {
@@ -15,6 +16,8 @@ func InsertoProyecto(w http.ResponseWriter, r *http.Request) {
 	proyect := m.GraboProyecto{
 		UserID:      IDusuario,
 		Titulo:      p.Titulo,
+		Github:      p.Github,
+		SitioWeb:    p.SitioWeb,
 		Descripcion: p.Descripcion,
 		Portada:     p.Portada,
 		Empresa:     p.Empresa,

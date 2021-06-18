@@ -2,39 +2,37 @@ package routers
 
 import (
 	"encoding/json"
+	"fmt"
+	"net/http"
+
 	db "github.com/LilJade/virtualBriefcase/database"
 	m "github.com/LilJade/virtualBriefcase/models"
-	"net/http"
 )
 
 func ActualizarProyecto(w http.ResponseWriter, r *http.Request) {
-	var up m.Proyecto
+	var Proyecto m.GraboProyecto
 
-	err := json.NewDecoder(r.Body).Decode(&up)
+	err := json.NewDecoder(r.Body).Decode(&Proyecto)
 
 	if err != nil {
-		http.Error(w, "Datos inválidos: "+err.Error(), 400)
+		http.Error(w, "datos invalidos"+err.Error(), 400)
 		return
 	}
 
-	update := m.GraboProyecto{
-		UserID:      IDusuario,
-		Titulo:      up.Titulo,
-		Descripcion: up.Descripcion,
-		Portada:     up.Portada,
-		Empresa:     up.Empresa,
-	}
-
 	var status bool
-	status, err = db.ActualizarProyecto(update, IDusuario)
 
+	status, err = db.ActualizarProyecto(Proyecto, Proyecto.ID.Hex())
+	fmt.Println(Proyecto.ID.String())
+	fmt.Println(Proyecto.ID.Hex())
 	if err != nil {
-		http.Error(w, "error al intentar actualizar el proyecto: "+err.Error(), 400)
+		http.Error(w, "Error al actualizar recargue la pagina e intente de nuevo"+err.Error(), 400)
 		return
 	}
 
 	if status == false {
-		http.Error(w, "No se pudo completar la actualización...", 400)
+		http.Error(w, "no se ha logrado actualizar usuario", 400)
 		return
 	}
+	w.WriteHeader(http.StatusCreated)
+
 }

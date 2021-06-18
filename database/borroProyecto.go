@@ -2,9 +2,10 @@ package database
 
 import (
 	"context"
+	"time"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"time"
 )
 
 func BorroProyecto(ID string, UserId string) error {
@@ -12,7 +13,7 @@ func BorroProyecto(ID string, UserId string) error {
 	defer cancel()
 
 	db := MongoConn.Database("bd")
-	col := db.Collection("proyecto")
+	col := db.Collection("proyectos")
 
 	objID, _ := primitive.ObjectIDFromHex(ID)
 

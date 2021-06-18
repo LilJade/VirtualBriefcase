@@ -12,15 +12,11 @@ import (
 
 func SubirPortada(w http.ResponseWriter, r *http.Request) {
 
-	ID := r.URL.Query().Get("id")
+	id := r.FormValue("id")
 
-	if len(ID) < 1 {
-		http.Error(w, "Se necesita el parámetro id", http.StatusBadRequest)
-		return
-	}
 	file, handler, err := r.FormFile("portada")
 	var extension = strings.Split(handler.Filename, ".")[1]
-	var archivo string = "uploads/portada/" + ID + "." + extension
+	var archivo string = "uploads/portada/" + id + "." + extension
 
 	f, err := os.OpenFile(archivo, os.O_WRONLY|os.O_CREATE, 0666)
 
@@ -39,9 +35,9 @@ func SubirPortada(w http.ResponseWriter, r *http.Request) {
 	var project models.GraboProyecto
 	var status bool
 
-	project.Portada = ID + "." + extension
+	project.Portada = id + "." + extension
 
-	status, err = database.ActualizarProyecto(project, ID)
+	status, err = database.ActualizarProyecto(project, id)
 
 	if err != nil {
 		http.Error(w, "No se pudo guardar en la base de datos: "+err.Error(), 400)

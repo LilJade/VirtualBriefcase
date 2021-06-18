@@ -1,8 +1,9 @@
 package routers
 
 import (
-	db "github.com/LilJade/virtualBriefcase/database"
 	"net/http"
+
+	db "github.com/LilJade/virtualBriefcase/database"
 )
 
 func BorroProyecto(w http.ResponseWriter, r *http.Request) {
@@ -19,5 +20,5 @@ func BorroProyecto(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("content-type", "application/json")
-	w.WriteHeader(201)
+	w.WriteHeader(http.StatusCreated)
 }
