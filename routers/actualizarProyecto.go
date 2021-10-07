@@ -2,7 +2,6 @@ package routers
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	db "github.com/LilJade/virtualBriefcase/database"
@@ -22,8 +21,6 @@ func ActualizarProyecto(w http.ResponseWriter, r *http.Request) {
 	var status bool
 
 	status, err = db.ActualizarProyecto(Proyecto, Proyecto.ID.Hex())
-	fmt.Println(Proyecto.ID.String())
-	fmt.Println(Proyecto.ID.Hex())
 	if err != nil {
 		http.Error(w, "Error al actualizar recargue la pagina e intente de nuevo"+err.Error(), 400)
 		return
