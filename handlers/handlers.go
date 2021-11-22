@@ -37,7 +37,8 @@ func Manejadores() {
 	router.HandleFunc("/seguidor", middleware.CheckDB(middleware.ValidoJWT(routers.Useguidor))).Methods("POST")
 	router.HandleFunc("/consultaRelacion", middleware.CheckDB(middleware.ValidoJWT(routers.ConsultaRelacion))).Methods("GET")
 	router.HandleFunc("/bajaRelacion", middleware.CheckDB(middleware.ValidoJWT(routers.BajaRelacion))).Methods("DELETE")
-
+	router.HandleFunc("/herramientasUsuario",middleware.CheckDB(middleware.ValidoJWT(routers.Uherramientas))).Methods("POST")
+	router.HandleFunc("herramientasProyecto",middleware.CheckDB(middleware.ValidoJWT(routers.Utools))).Methods("POST")
 	PORT := os.Getenv("PORT")
 
 	if PORT == "" {
