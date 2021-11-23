@@ -22,8 +22,11 @@ func Manejadores() {
 	router.HandleFunc("/actualizarPass", middleware.CheckDB(middleware.ValidoJWT(routers.ActualizarPassword))).Methods("PUT")
 
 	router.HandleFunc("/subirAvatar", middleware.CheckDB(middleware.ValidoJWT(routers.SubirAvatar))).Methods("POST")
+	router.HandleFunc("/subirIcono", middleware.CheckDB(middleware.ValidoJWT(routers.Subiricono))).Methods("POST")
 	router.HandleFunc("/obtenerAvatar", middleware.CheckDB(routers.ObtenerAvatar)).Methods("GET")
+	router.HandleFunc("/obtenerIcono", middleware.CheckDB(routers.ObtenerIcono)).Methods("GET")
 	router.HandleFunc("/mostrarDatos", middleware.CheckDB(middleware.ValidoJWT(routers.Listausuarios))).Methods("GET")
+	router.HandleFunc("/mostrarHerramientas", middleware.CheckDB(middleware.ValidoJWT(routers.ListaHerramientas))).Methods("GET")
 
 	router.HandleFunc("/createProject", middleware.CheckDB(middleware.ValidoJWT(routers.InsertoProyecto))).Methods("POST")
 	router.HandleFunc("/updateProject", middleware.CheckDB(middleware.ValidoJWT(routers.ActualizarProyecto))).Methods("PUT")
@@ -36,9 +39,12 @@ func Manejadores() {
 
 	router.HandleFunc("/seguidor", middleware.CheckDB(middleware.ValidoJWT(routers.Useguidor))).Methods("POST")
 	router.HandleFunc("/consultaRelacion", middleware.CheckDB(middleware.ValidoJWT(routers.ConsultaRelacion))).Methods("GET")
+	router.HandleFunc("/consultaRelacionHU", middleware.CheckDB(middleware.ValidoJWT(routers.ConsultaRelacionHU))).Methods("GET")
 	router.HandleFunc("/bajaRelacion", middleware.CheckDB(middleware.ValidoJWT(routers.BajaRelacion))).Methods("DELETE")
-	router.HandleFunc("/herramientasUsuario",middleware.CheckDB(middleware.ValidoJWT(routers.Uherramientas))).Methods("POST")
-	router.HandleFunc("herramientasProyecto",middleware.CheckDB(middleware.ValidoJWT(routers.Utools))).Methods("POST")
+	router.HandleFunc("/bajaRelacionHU", middleware.CheckDB(middleware.ValidoJWT(routers.BajaRelacionHU))).Methods("DELETE")
+	router.HandleFunc("/herramientasUsuario", middleware.CheckDB(middleware.ValidoJWT(routers.AltaRelacionHU))).Methods("POST")
+	router.HandleFunc("herramientasProyecto", middleware.CheckDB(middleware.ValidoJWT(routers.Utools))).Methods("GET")
+	router.HandleFunc("/veoherramientas", middleware.CheckDB(middleware.ValidoJWT(routers.LeoHerramientas))).Methods("GET")
 	PORT := os.Getenv("PORT")
 
 	if PORT == "" {
