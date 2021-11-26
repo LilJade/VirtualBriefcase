@@ -22,9 +22,11 @@ func Manejadores() {
 	router.HandleFunc("/actualizarPass", middleware.CheckDB(middleware.ValidoJWT(routers.ActualizarPassword))).Methods("PUT")
 
 	router.HandleFunc("/subirAvatar", middleware.CheckDB(middleware.ValidoJWT(routers.SubirAvatar))).Methods("POST")
+	router.HandleFunc("/subirImagen", middleware.CheckDB(middleware.ValidoJWT(routers.SubirImagenes))).Methods("POST")
 	router.HandleFunc("/subirIcono", middleware.CheckDB(middleware.ValidoJWT(routers.Subiricono))).Methods("POST")
 	router.HandleFunc("/obtenerAvatar", middleware.CheckDB(routers.ObtenerAvatar)).Methods("GET")
 	router.HandleFunc("/obtenerIcono", middleware.CheckDB(routers.ObtenerIcono)).Methods("GET")
+	router.HandleFunc("/obtenerImagenes", middleware.CheckDB(routers.GetImagen)).Methods("GET")
 	router.HandleFunc("/mostrarDatos", middleware.CheckDB(middleware.ValidoJWT(routers.Listausuarios))).Methods("GET")
 	router.HandleFunc("/mostrarHerramientas", middleware.CheckDB(middleware.ValidoJWT(routers.ListaHerramientas))).Methods("GET")
 
@@ -35,6 +37,7 @@ func Manejadores() {
 	router.HandleFunc("/delProject", middleware.CheckDB(middleware.ValidoJWT(routers.BorroProyecto))).Methods("DELETE")
 	router.HandleFunc("/seeProject", middleware.CheckDB(middleware.ValidoJWT(routers.VeoProjects))).Methods("GET")
 	router.HandleFunc("/seeFProjects", middleware.CheckDB(middleware.ValidoJWT(routers.VeoProyectosSeguidores))).Methods("GET")
+	router.HandleFunc("/seeImagenes", middleware.CheckDB(middleware.ValidoJWT(routers.Veoimagenes))).Methods("GET")
 	router.HandleFunc("/proyecto", middleware.CheckDB(middleware.ValidoJWT(routers.VerProyecto))).Methods("GET")
 
 	router.HandleFunc("/seguidor", middleware.CheckDB(middleware.ValidoJWT(routers.Useguidor))).Methods("POST")

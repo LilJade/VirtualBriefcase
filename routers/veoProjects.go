@@ -2,9 +2,10 @@ package routers
 
 import (
 	"encoding/json"
-	db "github.com/LilJade/virtualBriefcase/database"
 	"net/http"
 	"strconv"
+
+	db "github.com/LilJade/virtualBriefcase/database"
 )
 
 func VeoProjects(w http.ResponseWriter, r *http.Request) {
@@ -32,7 +33,7 @@ func VeoProjects(w http.ResponseWriter, r *http.Request) {
 	respuesta, correcto := db.VeoProyectos(ID, pag)
 
 	if correcto == false {
-		http.Error(w, "Error al leer los tweets: ", 400)
+		http.Error(w, "Error al leer los proyectos: ", 400)
 		return
 	}
 
